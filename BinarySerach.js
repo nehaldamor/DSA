@@ -1,29 +1,17 @@
-let data=[2,5,8,33,45];
-let start=0;
-let find=45;
-let end=data.length-1;
-let position=undefined;
+let arr = [1, 2, 3, 5, 6, 7, 7];
 
-while(start<=end){
-    let mid=Math.floor((start+end)/2);
-    if(data[mid]===find){
-        position=mid;       
-        break;
+function bs(arr) {
+    let st = 0;
+    let end = arr.length - 1;
+    let f = 7;
+
+    while (st <= end) {
+        let mid = (st + end) / 2;
+        if (arr[mid] == f) return mid;
+        else if (arr[mid] < f) st = mid + 1;
+        else end = mid - 1;
     }
-    else if(data[mid]<find){
-        start=mid+1;
-    }
-    else if(data[mid]>find){
-        end=mid-1;
-    }
-   
-   
-}
-if(position==undefined){
-    console.log("not found");
-}
-else{
-    console.log(`element available on position ${position}`);
 }
 
+console.log(bs(arr));
 

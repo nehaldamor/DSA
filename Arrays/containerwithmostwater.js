@@ -25,11 +25,8 @@ function cwmt2(height){
         let w=r-l;
         let h=Math.min(height[l],height[r]);
         mh=Math.max(mh,w*h);
-        if(height[l]<height[r]){
-            l++;
-        }else{
-            r--;
-        }
+        if(height[l]<height[r])l++;
+        else r--;
     }
     return mh;
 }
