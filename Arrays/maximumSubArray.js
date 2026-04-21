@@ -18,16 +18,14 @@ return msum;
 
 //Kadane Alogorithm
 
-function kadane(arr){
-    let msum=Number.MIN_VALUE;
-    let csum=0;
-    for(let i=0;i<arr.length;i++){
-      csum+=arr[i];
-      msum=Math.max(csum,msum);
-      if(csum<0) csum=0;
-
+function kadane(nums){
+    let mx=nums[0];
+    let sum=nums[0];
+    for(let i=1;i<nums.length;i++){
+        sum=Math.max(nums[i],nums[i]+sum);
+        mx=Math.max(sum,mx);
     }
-    return msum;
+    return mx;
 }
 
 console.log(kadane(arr));
