@@ -1,67 +1,39 @@
-// let mat=[[1,1,1],[1,0,1],[1,1,-1]];
-
-// let n=mat.length;
-// let m=mat[0].length;
-
-// function makerow(i,m){
-//     for(let j=0;j<m;j++){
-//         if(mat[i][j]!==0) {
-//             mat[i][j]="NA";
-//         }
-//     }
-// }
-
-// function makecol(j,n){
-//     for(let i=0;i<n;i++){
-//         if(mat[i][j]!==0){
-//             mat[i][j]="NA";
-//         }
-//     }
-// }
-
-// for(let i=0;i<n;i++){
-//     for(let j=0;j<m;j++){
-//         if(mat[i][j]==0){
-//             makecol(j,n);
-//             makerow(i,m);
-//         }
-//     }
-// }
-
-// for(let i=0;i<n;i++){
-//     for(let j=0;j<m;j++){
-//         if(mat[i][j]=="NA"){
-//             mat[i][j]=0;
-//         }
-//     }
-// }
+let mat = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]];
+let n = mat.length;
+let m = mat[0].length;
+let ans = [];
+let left = 0;
+let right = m - 1;
+let top = 0;
+let bot = n - 1;
 
 
-// console.log(mat);
+while (left <= right && top <= bot) {
 
-
-
-let mat=[[1,1,1],[1,0,1],[1,1,-1]];
-let n=mat.length;
-let m=mat[0].length;
-let row=new Array(n).fill(0);
-let col=new Array(m).fill(0);
-
-for(let i=0;i<n;i++){
-    for(let j=0;j<m;j++){
-        if(mat[i][j]==0){
-            row[i]=1;
-            col[j]=1;
-        }
+    for (let i = left; i <= right; i++) {
+        ans.push(mat[top][i]);
     }
+    top++;
+
+    for (let i = top; i <= bot; i++) {
+        ans.push(mat[i][right]);
+    }
+    right--;
+
+    if (top <= bot) {
+        for (let i = right; i >= left; i--) {
+            ans.push(mat[bot][i]);
+        }
+        bot--;
+    }
+
+    if (left <= right) {
+        for (let i = bot; i >= top; i--) {
+            ans.push(mat[i][left]);
+        }
+        left++;
+    }
+
 }
 
-for(let i=0;i<n;i++){
-    for(let j=0;j<m;j++){
-        if(row[i]==1 || col[j]==1){
-            mat[i][j]=0;
-        }
-    }
-}
-
-console.log(mat);
+console.log(ans);
