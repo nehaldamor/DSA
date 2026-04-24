@@ -40,7 +40,7 @@ let tc1=0;
 let tc2=0;
 for(let i=0;i<n;i++){
     if(arr[i]==el1) tc1++;
-    if(arr[i]==el2) tc2++;
+    else if(arr[i]==el2) tc2++;
 }
 
 if(tc1>n/3) ans.push(el1);
