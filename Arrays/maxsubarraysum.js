@@ -22,7 +22,7 @@
 // console.log(ans);
 
 
-let nums = [-2, -3, -7, -2, -10, -4]   ;
+let nums = [-2, -3, -7,-2,5,1,2,,-10, -4]   ;
 
 let max=nums[0];
 let sum=nums[0];
