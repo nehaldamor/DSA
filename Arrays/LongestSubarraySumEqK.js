@@ -17,24 +17,24 @@
 
 // console.log(mx);
 
- let arr = [10, 5, 2, 7, 1,-10];
-let k = 15;
+let arr = [2, -2, 3, 0, 4, -7, 1, 3];
+let k = 3;
 
-let mx=0;
+let mx = 0;
 
-let map=new Map();
-let sum=0;
-for(let i=0;i<arr.length;i++){
-    sum+=arr[i];
-    if(sum==k) mx=i+1;
+let map = new Map();
+let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (sum == k) mx = i + 1;
 
-    
-    if(map.has(sum-k)) {
-        let len=i-map.get(sum-k);
-        mx=Math.max(mx,len);
+
+    if (map.has(sum - k)) {
+        let len = i - map.get(sum - k);
+        mx = Math.max(mx, len);
     }
 
-    if(!map.has(sum)) map.set(sum,i)
+    if (!map.has(sum)) map.set(sum, i)
 }
 
 console.log(mx);
