@@ -1,19 +1,20 @@
-let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1];
-
-function peak(nums) {
-    let n = nums.length;
-    
-    let st = 1;
-    let end = n - 2;
-    if (n == 1) return 0;
-    if(nums[0]>nums[1]) return 0;
-    if(nums[n-1]>nums[n-2]) return n-1;
-    while (st <= end) {
-        let mid = Math.floor((st + end) / 2);
-        if (nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1]) return nums[mid];
-        else if ( nums[mid] > nums[mid - 1]) st = mid + 1;
-        else end = mid - 1;
+let nums=[7, 7, 7, 7, 13, 11, 12, 7];
+let m=2;
+let n=2;
+let d=7;
+let c=0;
+let ans=0;
+for(let i=0;i<nums.length;i++){
+    if(nums[i]<=d){
+        c++;
+        if(c==n){
+            ans++;
+            c=0;
+        }
+    }else{
+        c=0;
     }
+    // if(ans==m) return;
 }
 
-console.log(peak(nums));
+console.log(ans);
