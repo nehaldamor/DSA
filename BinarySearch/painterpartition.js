@@ -1,5 +1,3 @@
-let nums=[1,2,3,4,5];
-let k=2;
 if(nums.length<k) return -1;
 let sum=0;
 let max=-Infinity;
@@ -26,5 +24,4 @@ while(st<=end){
     if(check(nums,mid,k)) end=mid-1;
     else st=mid+1;
 }
-
 console.log(st);

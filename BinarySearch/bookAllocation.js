@@ -1,23 +1,25 @@
-let nums=[1,2,3,4,5];
+let nums=[12,34,67,90];
+
 let k=2;
 if(nums.length<k) return -1;
-let sum=0;
 let max=-Infinity;
+let sum=0;
 for(let i=0;i<nums.length;i++){
-    sum+=nums[i];
     max=Math.max(max,nums[i]);
+    sum+=nums[i];
 }
-function check(nums,tsum,k){
-    let csubarr=1;
+function check(nums,pages,s){
+    let st=1;
     let sum=nums[0];
     for(let i=1;i<nums.length;i++){
-        if(nums[i]+sum<=tsum) sum+=nums[i];
-        else{
-            csubarr++;
+        if(sum+nums[i]<=pages){
+            sum+=nums[i];
+        }else{
             sum=nums[i];
+            st++;
         }
     }
-    return csubarr<=k;
+    return st<=s;
 }
 let st=max;
 let end=sum;
@@ -26,5 +28,4 @@ while(st<=end){
     if(check(nums,mid,k)) end=mid-1;
     else st=mid+1;
 }
-
 console.log(st);
