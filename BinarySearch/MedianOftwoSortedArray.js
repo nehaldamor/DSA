@@ -43,17 +43,16 @@
 // }else console.log(m2);
 
 
-let nums2 = [1, 3, 5, 8, 10, 12];
-let nums1 = [2, 4, 6, 15];
-let k=7;
+let nums2 = [1, 3, 4, 7, 10, 12];
+let nums1 = [2, 3, 3, 15];
 let n1=nums1.length;
 let n2=nums2.length
 
-let low=Math.max(0,k-n2);
-let high=Math.min(k,n1);
+let low=0;
+let high=n1;
 while(low<=high){
     let cut1=Math.floor((low+high)/2);
-    let cut2=k-cut1;
+    let cut2=Math.floor((n1+n2+1)/2)-cut1;
 
     let l1=cut1===0?-Infinity:nums1[cut1-1];
     let l2=cut2===0?-Infinity:nums2[cut2-1];
@@ -61,11 +60,15 @@ while(low<=high){
     let r2=cut2===n2?Infinity:nums2[cut2];
 
     if(l1<=r2 && l2<=r1){
-        console.log(Math.max(l1,l2));
+        if((n1+n2)%2===0){
+            // return (Math.max(l1,l2)+Math.min(r1,r2))/2
+            console.log((Math.max(l1,l2)+Math.min(r1,r2))/2)
+        }else {
+           console.log(Math.max(l1,l2))
+        }
         break;
     }else if(l1>r2){
         high=cut1-1;
     }else low=cut1+1;
 
 }
-return -1;
