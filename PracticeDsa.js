@@ -1,2 +1,8 @@
-let mat = [[10,20,15],[21,30,14],[7,16,32]]
-
+let str="4201568";
+let mx="0";
+for(let ch of str){
+    if(ch%2!=0){
+        if(ch>mx) mx=ch;
+    }
+}
+console.log(mx);
