@@ -6,7 +6,7 @@ class Node {
     }
 }
 let arr = [1, 2, 3, 4, 5, 6];
-function arrToLL(arr) {
+function arrToDLL(arr) {
     let head = new Node(arr[0]);
     let tail = head;
     let prev=head;
@@ -37,8 +37,7 @@ function printRLL(head) {
 
     }
 }
-let head = arrToLL(arr);
-let prev = arrToLL(arr);
+let head = arrToDLL(arr);
 
-printLL(head);
-printRLL(prev);
+printLL(head); 
+
