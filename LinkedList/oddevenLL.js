@@ -60,7 +60,25 @@ function arrgeoddeven(head){
     return odd;
 }
 
+function segreteEvenOdd(head){
+    if(head==null || head.next==null) return head;
+
+    let odd=head;
+    let even=head.next;
+    let evenh=even;
+    while(even!=null && even.next!=null){
+        odd.next=odd.next.next;
+        even.next=even.next.next;
+
+        odd=odd.next;
+        even=even.next;
+    }
+    odd.next=evenh;
+    return head;
+}
+
 let head=arrToLL(arr);
-head=arrgeoddeven(head);
+// head=arrgeoddeven(head);
+head=segreteEvenOdd(head);
 printll(head);
 

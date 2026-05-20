@@ -37,8 +37,20 @@ function reverseLL(head){
     return prev;;
 }
 
+function reverseRecursively(head){
+    if(head==null || head.next==null) return head;
+
+    let newhead=reverseRecursively(head.next);
+
+    let front=head.next;
+    front.next=head;
+    head.next=null;
+    return newhead;
+}
+
 let head=arrToLL(arr);
 // printll(head);
-head=reverseLL(head);
+// head=reverseLL(head);
+head=reverseRecursively(head);
 printll(head)
 

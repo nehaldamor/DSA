@@ -4,7 +4,7 @@ class Node{
     this.next=null;
    }
 }
-let arr=[1,2];
+let arr=[1,2,2,1];
 function arrToLL(arr){
     let head=new Node(arr[0]);
     let tail=head;
@@ -42,7 +42,42 @@ function checkpalidromorNot(head){
     return true;
 }
 
+function reverseRecursively(head){
+    if(head==null || head.next==null) return head;
+
+    let newhead=reverseRecursively(head.next);
+
+    let front=head.next;
+    front.next=head;
+    head.next=null;
+    return newhead;
+}
+
+function checkpalidrom(head){
+    if(head==null || head.next==null) return true;
+    let slow=head;
+    let fast=head;
+    while(fast.next!==null && fast.next.next!==null){
+        slow=slow.next;
+        fast=fast.next.next;
+    }
+    let newhead=reverseRecursively(slow.next);
+    let newheadt=newhead;
+    let temp=head;
+    while(newheadt!==null){
+        if(newheadt.data!==temp.data){
+            reverseRecursively(newhead);
+            return false;
+        };
+        newheadt=newheadt.next;
+        temp=temp.next;
+    }
+    reverseRecursively(newhead);
+    return true;
+}
 let head=arrToLL(arr);
 printll(head);
+
+console.log(checkpalidrom(head));
 console.log(checkpalidromorNot(head));
 
